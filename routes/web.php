@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DataLoggerController;
+use App\Http\Controllers\PrediksiController;
+use App\Http\Controllers\StatusController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +20,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/prediksi', [PrediksiController::class, 'index']);
+Route::get('/data-logger', [DataLoggerController::class, 'index']);
+Route::get('/status', [StatusController::class, 'index']);
