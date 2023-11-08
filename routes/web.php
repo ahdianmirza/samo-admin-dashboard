@@ -22,6 +22,8 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/data-udara', [DashboardController::class, 'dataUdara'])->name('dataUdara');
+
 Route::get('/prediksi', [PrediksiController::class, 'index']);
 Route::get('/data-logger', [DataLoggerController::class, 'index']);
 Route::get('/status', [StatusController::class, 'index']);

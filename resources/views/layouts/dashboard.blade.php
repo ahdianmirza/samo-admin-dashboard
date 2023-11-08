@@ -18,6 +18,8 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
 
+    <script src="{{ asset('js/jquery.js') }}"></script>
+
     <title>{{ $title }} | Samo</title>
 </head>
 

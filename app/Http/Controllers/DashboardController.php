@@ -14,4 +14,9 @@ class DashboardController extends Controller
             'data_udara' => DataLogger::orderBy('id', 'desc')->first()
         ]);
     }
+
+    public function dataUdara() {
+        $data_udara = DataLogger::orderBy('id', 'desc')->first();
+        return response()->json($data_udara);
+    }
 }

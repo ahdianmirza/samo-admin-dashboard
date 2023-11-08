@@ -18,7 +18,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 Partikel 0.5 Mikron</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $data_udara->mikronKecil }}</div>
+                            <div id="mikronKecil" class="h5 mb-0 font-weight-bold text-gray-800"></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-star-of-life fa-2x text-gray-300"></i>
@@ -36,7 +36,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                 Suhu Ruangan</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $data_udara->suhu }}</div>
+                            <div id="suhu" class="h5 mb-0 font-weight-bold text-gray-800"></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-temperature-high fa-2x text-gray-300"></i>
@@ -57,8 +57,7 @@
                             </div>
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ $data_udara->kelembapan }}%
-                                    </div>
+                                    <div id="kelembapan" class="h5 mb-0 mr-3 font-weight-bold text-gray-800"></div>
                                 </div>
                                 <div class="col">
                                     <div class="progress progress-sm mr-2">
@@ -84,7 +83,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                 Kadar Gas CO2</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $data_udara->karbonDioksida }}</div>
+                            <div id="karbonDioksida" class="h5 mb-0 font-weight-bold text-gray-800"></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-fire fa-2x text-gray-300"></i>
@@ -101,7 +100,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                 Kadar Gas Alcohol</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $data_udara->alkohol }}</div>
+                            <div id="alkohol" class="h5 mb-0 font-weight-bold text-gray-800"></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-fire fa-2x text-gray-300"></i>
@@ -220,4 +219,35 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // $('#mikronKecil').text()
+        $(document).ready(function() {
+            setInterval(() => {
+                dataUdara();
+            }, 1000);
+        });
+
+        function dataUdara() {
+            $.ajax({
+                url: "{{ route('dataUdara') }}",
+                type: "GET",
+                dataType: "json",
+                success: function(data) {
+                    mikronKecil = data.mikronKecil;
+                    mikronBesar = data.mikronBesar;
+                    suhu = data.suhu;
+                    karbonDioksida = data.karbonDioksida;
+                    alkohol = data.alkohol;
+                    kelembapan = data.kelembapan;
+
+                    $('#mikronKecil').text(mikronKecil);
+                    $('#suhu').text(suhu);
+                    $('#karbonDioksida').text(karbonDioksida);
+                    $('#alkohol').text(alkohol);
+                    $('#kelembapan').text(kelembapan);
+                }
+            });
+        }
+    </script>
 @endsection
