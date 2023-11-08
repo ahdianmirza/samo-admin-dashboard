@@ -18,7 +18,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 Partikel 0.5 Mikron</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">2.780</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $data_udara->mikronKecil }}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-star-of-life fa-2x text-gray-300"></i>
@@ -36,7 +36,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                 Suhu Ruangan</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">25</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $data_udara->suhu }}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-temperature-high fa-2x text-gray-300"></i>
@@ -57,7 +57,8 @@
                             </div>
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ $data_udara->kelembapan }}%
+                                    </div>
                                 </div>
                                 <div class="col">
                                     <div class="progress progress-sm mr-2">
@@ -83,7 +84,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                 Kadar Gas CO2</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">20</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $data_udara->karbonDioksida }}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-fire fa-2x text-gray-300"></i>
@@ -100,7 +101,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                 Kadar Gas Alcohol</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">20</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $data_udara->alkohol }}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-fire fa-2x text-gray-300"></i>

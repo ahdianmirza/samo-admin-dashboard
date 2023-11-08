@@ -18,7 +18,7 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
 
-    <title>Dashboard | Samo</title>
+    <title>{{ $title }} | Samo</title>
 </head>
 
 <body id="page-top">
