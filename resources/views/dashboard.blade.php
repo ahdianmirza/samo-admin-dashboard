@@ -1,9 +1,18 @@
 @extends('layouts.dashboard')
 
 @section('container')
+    <div class="row">
+        <div class="col">
+            {!! $loggers->container() !!}
+        </div>
+    </div>
+
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+        @foreach ($udaras as $udara)
+            <p>{{ $udara }}</p>
+        @endforeach
         <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><iclass="fas fa-download fa-sm text-white-50"></iclass=> Generate Report</a> -->
     </div>
 
@@ -223,6 +232,10 @@
             </div>
         </div>
     </div>
+
+    <script src="{{ $loggers->cdn() }}"></script>
+
+    {{ $loggers->script() }}
 
     <script>
         // $('#mikronKecil').text()
