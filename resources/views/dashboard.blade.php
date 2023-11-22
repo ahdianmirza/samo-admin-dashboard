@@ -201,7 +201,9 @@
                         <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
                             src="{{ asset('img/SAMO.png') }}" alt="...">
                     </div>
-                    <p>Ceritakan SAMO Disini!</p>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam rem vero illum, nemo eius omnis
+                        nostrum, corporis harum tempora beatae sint aspernatur voluptatum. Magnam nesciunt id quibusdam?
+                        Architecto, provident nostrum.</p>
                 </div>
             </div>
 
@@ -212,9 +214,11 @@
                     <h6 class="m-0 font-weight-bold text-primary">Cara Penggunaan SAMO</h6>
                 </div>
                 <div class="card-body">
-                    <p>Disini Akan tertulis Konten Cara menggunakan perangkat SAMO</p>
-                    <p class="mb-0">Disini juga nantinya terdapat link yang direct ke PDF Manual Book
-                        SAMO</p>
+                    <div class="visible-print text-center">
+                        <h4 class="mb-2">Buku Panduan Penggunaan Samo</h4>
+                        {!! QrCode::size(200)->generate('https://github.com/ahdianmirza') !!}
+                        <p class="mt-2">Scan barcode di atas</p>
+                    </div>
                 </div>
             </div>
         </div>
