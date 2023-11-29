@@ -25,8 +25,6 @@ class MonitoringChart
             array_push($mikronKecil, $dataLogger);
         }
 
-        dd($mikronKecil);
-
         return $this->chart->lineChart()
             ->setTitle('Smart Air Monitoring')
             ->setSubtitle('Monitoring Kualitas Udara')

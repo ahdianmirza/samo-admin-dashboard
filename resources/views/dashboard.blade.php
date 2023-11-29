@@ -10,9 +10,6 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-        @foreach ($udaras as $udara)
-            <p>{{ $udara }}</p>
-        @endforeach
         <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><iclass="fas fa-download fa-sm text-white-50"></iclass=> Generate Report</a> -->
     </div>
 
@@ -238,33 +235,36 @@
     {{ $loggers->script() }}
 
     <script>
-        // $('#mikronKecil').text()
+        function ambilDataUdara() {
+            const request = new Request("api/data-udara", {
+                method: "GET",
+            });
+
+            const response = fetch(request);
+            console.info(response);
+
+            response
+                .then(response => response.json())
+                .then(json => {
+                    document.getElementById("mikronKecil").textContent = json.mikronKecil;
+                    document.getElementById("suhu").textContent = json.suhu;
+                    document.getElementById("kelembapan").textContent = json.kelembapan;
+                    document.getElementById("karbonDioksida").textContent = json.karbonDioksida;
+                    document.getElementById("alkohol").textContent = json.alkohol;
+                })
+                .catch(error => {
+                    document.getElementById("mikronKecil").textContent = error;
+                    document.getElementById("suhu").textContent = error;
+                    document.getElementById("kelembapan").textContent = error;
+                    document.getElementById("karbonDioksida").textContent = error;
+                    document.getElementById("alkohol").textContent = error;
+                })
+        }
+
         $(document).ready(function() {
             setInterval(() => {
-                dataUdara();
-            }, 1000);
+                ambilDataUdara();
+            }, 5000);
         });
-
-        function dataUdara() {
-            $.ajax({
-                url: "{{ route('dataUdara') }}",
-                type: "GET",
-                dataType: "json",
-                success: function(data) {
-                    mikronKecil = data.mikronKecil;
-                    mikronBesar = data.mikronBesar;
-                    suhu = data.suhu;
-                    karbonDioksida = data.karbonDioksida;
-                    alkohol = data.alkohol;
-                    kelembapan = data.kelembapan;
-
-                    $('#mikronKecil').text(mikronKecil);
-                    $('#suhu').text(suhu);
-                    $('#karbonDioksida').text(karbonDioksida);
-                    $('#alkohol').text(alkohol);
-                    $('#kelembapan').text(kelembapan);
-                }
-            });
-        }
     </script>
 @endsection

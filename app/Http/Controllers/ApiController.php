@@ -12,4 +12,8 @@ class ApiController extends Controller
         $dataUdara = $request->all();
         DataLogger::create($dataUdara);
     }
+
+    public function indexDataUdara() {
+        return response()->json(DataLogger::orderBy('id', 'desc')->first());
+    }
 }
