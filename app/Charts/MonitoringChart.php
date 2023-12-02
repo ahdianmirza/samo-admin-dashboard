@@ -18,17 +18,28 @@ class MonitoringChart
     {
         // $dataLogger = DataLogger::value('mikronKecil');
         $mikronKecil = [];
+        $suhu = [];
+        $kelembapan = [];
 
-        for ($i=0; $i <= DataLogger::all()->count(); $i++) { 
-            $dataLogger = DataLogger::where('id', $i)->value('mikronKecil');
-            intval($dataLogger);
-            array_push($mikronKecil, $dataLogger);
+        for ($i=1; $i <= DataLogger::all()->count(); $i++) {
+            $dataMikronKecil = DataLogger::where('id', $i)->value('mikronKecil');
+            $dataSuhu = DataLogger::where('id', $i)->value('suhu');
+            $dataKelembapan = DataLogger::where('id', $i)->value('kelembapan');
+            intval($dataMikronKecil);
+            intval($dataSuhu);
+            intval($dataKelembapan);
+            array_push($mikronKecil, $dataMikronKecil);
+            array_push($suhu, $dataSuhu);
+            array_push($kelembapan, $dataKelembapan);
         }
 
         return $this->chart->lineChart()
             ->setTitle('Smart Air Monitoring')
-            ->setSubtitle('Monitoring Kualitas Udara')
-            ->addData('Monitoring Udara', $mikronKecil)
-            ->setXAxis(['Mikron Kecil']);
+            ->setSubtitle('Monitoring Partikel 0.5 Mikron')
+            ->addData('Partikel 0.5 Mikron', $mikronKecil)
+            ->addData('Suhu', $suhu)
+            ->addData('Kelembapan', $kelembapan)
+            ->setXAxis([])
+            ->setGrid();
     }
 }

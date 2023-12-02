@@ -1,12 +1,6 @@
 @extends('layouts.dashboard')
 
 @section('container')
-    <div class="row">
-        <div class="col">
-            {!! $loggers->container() !!}
-        </div>
-    </div>
-
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
@@ -146,8 +140,10 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                    <div class="chart-area">
-                        <canvas id="myAreaChart"></canvas>
+                    <div class="chart-area" style="height: 32rem">
+                        <div class="col">
+                            {!! $loggers->container() !!}
+                        </div>
                     </div>
                 </div>
             </div>
