@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('data_loggers', function (Blueprint $table) {
             $table->id();
-            $table->string('mikronKecil');
-            $table->string('mikronBesar');
-            $table->string('suhu');
-            $table->string('kelembapan');
-            $table->string('karbonDioksida');
-            $table->string('alkohol');
+            $table->string('mikronKecil')->nullable();
+            $table->string('mikronBesar')->nullable();
+            $table->string('suhu')->nullable();
+            $table->string('kelembapan')->nullable();
+            $table->string('karbonDioksida')->nullable();
+            $table->string('alkohol')->nullable();
+            $table->string('dataPrediksi')->nullable();
             $table->timestamps();
         });
     }

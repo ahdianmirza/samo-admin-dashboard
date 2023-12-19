@@ -5,7 +5,7 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Data Logger SAMO</h1>
         <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                                        class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
+                                                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
     </div>
 
 
@@ -28,7 +28,7 @@
                     <tbody>
                         @foreach ($dataLoggers as $dataLogger)
                             <tr>
-                                <td>{{ $dataLogger->created_at }}</td>
+                                <td>{{ date('d/m/Y H:i:s', strtotime($dataLogger->created_at)) }}</td>
                                 <td>{{ $dataLogger->mikronKecil }}</td>
                                 <td>{{ $dataLogger->mikronBesar }}</td>
                                 <td>{{ $dataLogger->suhu }}</td>
@@ -42,4 +42,6 @@
             </div>
         </div>
     </div>
+
+    {{ $dataLoggers->links() }}
 @endsection

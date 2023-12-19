@@ -5,7 +5,7 @@ namespace App\Charts;
 use App\Models\DataLogger;
 use ArielMejiaDev\LarapexCharts\LarapexChart;
 
-class MonitoringChart
+class MonitoringKelembapan
 {
     protected $chart;
 
@@ -16,19 +16,18 @@ class MonitoringChart
 
     public function build(): \ArielMejiaDev\LarapexCharts\LineChart
     {
-        $mikronKecil = [];
+        $kelembapan = [];
 
         for ($i=1; $i <= DataLogger::all()->count(); $i++) {
-            $dataMikronKecil = DataLogger::where('id', $i)->value('mikronKecil');
-            intval($dataMikronKecil);
-            array_push($mikronKecil, $dataMikronKecil);
+            $dataKelembapan = DataLogger::where('id', $i)->value('kelembapan');
+            intval($dataKelembapan);
+            array_push($kelembapan, $dataKelembapan);
         }
 
         return $this->chart->lineChart()
             ->setTitle('Smart Air Monitoring')
-            ->setSubtitle('Monitoring Partikel 0.5 Mikron')
-            ->addData('Partikel 0.5 Mikron', $mikronKecil)
-            ->setXAxis([])
-            ->setGrid();
+            ->setSubtitle('Monitoring Kelembapan Ruangan')
+            ->addData('Kelembapan Ruangan', $kelembapan)
+            ->setXAxis([]);
     }
 }
