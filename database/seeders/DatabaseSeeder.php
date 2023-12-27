@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\PersentaseUdara;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -24,6 +25,12 @@ class DatabaseSeeder extends Seeder
         User::create([
             'username' => 'adminsamo',
             'password' => bcrypt('samomantap123')
+        ]);
+
+        PersentaseUdara::create([
+            'mikronkecil' => 0,
+            'mikronSedang' => 0,
+            'mikronBesar' => 0
         ]);
     }
 }

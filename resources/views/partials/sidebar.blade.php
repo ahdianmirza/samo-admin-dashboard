@@ -31,11 +31,11 @@
             <span>Data Logger</span></a>
     </li>
 
-    <li class="nav-item active">
+    {{-- <li class="nav-item active">
         <a class="nav-link" href="/status">
             <i class="fas fa-fw fa-regular fa-info"></i>
             <span>Status Alat</span></a>
-    </li>
+    </li> --}}
 
     <!-- Divider -->
     <hr class="sidebar-divider">

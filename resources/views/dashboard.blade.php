@@ -59,12 +59,12 @@
                                 <div class="col-auto">
                                     <div id="kelembapan" class="h5 mb-0 mr-3 font-weight-bold text-gray-800"></div>
                                 </div>
-                                <div class="col">
+                                {{-- <div class="col">
                                     <div class="progress progress-sm mr-2">
                                         <div class="progress-bar bg-info" role="progressbar" style="width: 50%"
                                             aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                         <div class="col-auto">
@@ -156,35 +156,62 @@
                     <h6 class="m-0 font-weight-bold text-primary">Persentase Realtime</h6>
                 </div>
                 <div class="card-body">
-                    <h4 class="small font-weight-bold">Partikel 0.5 Mikron<span class="float-right">90%</span>
+                    <h4 class="small font-weight-bold">Partikel 0.5 Mikron<span
+                            class="float-right">{{ $dataPersentase->mikronKecil }}%</span>
                     </h4>
                     <div class="progress mb-4">
-                        <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20"
-                            aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar bg-danger" role="progressbar"
+                            style="width: {{ $dataPersentase->mikronKecil }}%"
+                            aria-valuenow="{{ $dataPersentase->mikronKecil }}" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
-                    <h4 class="small font-weight-bold">Partikel 10 Mikron <span class="float-right">40%</span>
+
+                    <h4 class="small font-weight-bold">Partikel 5 Mikron<span
+                            class="float-right">{{ $dataPersentase->mikronSedang }}%</span>
                     </h4>
                     <div class="progress mb-4">
-                        <div class="progress-bar bg-warning" role="progressbar" style="width: 40%" aria-valuenow="40"
-                            aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar bg-success" role="progressbar"
+                            style="width: {{ $dataPersentase->mikronSedang }}%"
+                            aria-valuenow="{{ $dataPersentase->mikronSedang }}" aria-valuemin="0" aria-valuemax="100">
+                        </div>
                     </div>
+
+                    <h4 class="small font-weight-bold">Partikel 10 Mikron <span
+                            class="float-right">{{ $dataPersentase->mikronBesar }}%</span>
+                    </h4>
+                    <div class="progress mb-4">
+                        <div class="progress-bar bg-warning" role="progressbar"
+                            style="width: {{ $dataPersentase->mikronBesar }}%"
+                            aria-valuenow="{{ $dataPersentase->mikronBesar }}" aria-valuemin="0" aria-valuemax="100">
+                        </div>
+                    </div>
+
                     <h4 class="small font-weight-bold">Suhu <span class="float-right">60%</span></h4>
                     <div class="progress mb-4">
                         <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60"
                             aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
-                    <h4 class="small font-weight-bold">kelembapan <span class="float-right">80%</span>
+
+                    <h4 class="small font-weight-bold">Kelembapan <span class="float-right">80%</span>
                     </h4>
                     <div class="progress mb-4">
                         <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80"
                             aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
-                    <h4 class="small font-weight-bold">CO2 <span class="float-right">Complete!</span>
+
+                    <h4 class="small font-weight-bold">Alkohol <span class="float-right">80%</span>
+                    </h4>
+                    <div class="progress mb-4">
+                        <div class="progress-bar bg-danger" role="progressbar" style="width: 80%" aria-valuenow="80"
+                            aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+
+                    <h4 class="small font-weight-bold">CO2 <span class="float-right">100%</span>
                     </h4>
                     <div class="progress">
                         <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100"
                             aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
+
                 </div>
             </div>
         </div>

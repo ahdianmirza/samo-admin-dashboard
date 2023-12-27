@@ -7,6 +7,7 @@ use App\Charts\MonitoringKelembapan;
 use App\Charts\MonitoringSuhu;
 use App\Http\Controllers\Controller;
 use App\Models\DataLogger;
+use App\Models\PersentaseUdara;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -19,6 +20,7 @@ class DashboardController extends Controller
             'loggers' => $monitoringChart->build(),
             'chartSuhu' => $monitoringSuhu->build(),
             'chartKelembapan' => $monitoringKelembapan->build(),
+            'dataPersentase' => PersentaseUdara::firstWhere('id', 1)
         ]);
     }
 
