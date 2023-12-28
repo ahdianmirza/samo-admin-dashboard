@@ -5,7 +5,7 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Data Logger SAMO</h1>
         <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
+                                                                                    class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
     </div>
 
 
@@ -26,17 +26,23 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($dataLoggers as $dataLogger)
+                        @if (count($dataLoggers) > 0)
+                            @foreach ($dataLoggers as $dataLogger)
+                                <tr>
+                                    <td>{{ date('d/m/Y H:i:s', strtotime($dataLogger->created_at)) }}</td>
+                                    <td>{{ $dataLogger->mikronKecil }}</td>
+                                    <td>{{ $dataLogger->mikronBesar }}</td>
+                                    <td>{{ $dataLogger->suhu }}</td>
+                                    <td>{{ $dataLogger->kelembapan }}</td>
+                                    <td>{{ $dataLogger->karbonDioksida }}</td>
+                                    <td>{{ $dataLogger->alkohol }}</td>
+                                </tr>
+                            @endforeach
+                        @else
                             <tr>
-                                <td>{{ date('d/m/Y H:i:s', strtotime($dataLogger->created_at)) }}</td>
-                                <td>{{ $dataLogger->mikronKecil }}</td>
-                                <td>{{ $dataLogger->mikronBesar }}</td>
-                                <td>{{ $dataLogger->suhu }}</td>
-                                <td>{{ $dataLogger->kelembapan }}</td>
-                                <td>{{ $dataLogger->karbonDioksida }}</td>
-                                <td>{{ $dataLogger->alkohol }}</td>
+                                <td colspan="7" class="text-center">No data found.</td>
                             </tr>
-                        @endforeach
+                        @endif
                     </tbody>
                 </table>
             </div>
