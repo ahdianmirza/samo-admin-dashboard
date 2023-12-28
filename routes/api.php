@@ -22,5 +22,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/data-udara', [ApiController::class, 'indexDataUdara']);
 Route::post('/data-udara', [ApiController::class, 'dataUdara']);
 
-Route::get('/data-persentase', [ApiController::class, 'indexDataPersentase']);
-Route::post('/data-persentase', [ApiController::class, 'dataPersentase']);
+Route::get('/persentase-udara', [ApiController::class, 'indexPersentaseUdara']);
+Route::post('/persentase-udara', [ApiController::class, 'postPersentaseUdara']);
+
+Route::get('/persentase-fuzzy', [ApiController::class, 'indexPersentaseFuzzy']);
+Route::post('/persentase-fuzzy', [ApiController::class, 'postPersentaseFuzzy']);

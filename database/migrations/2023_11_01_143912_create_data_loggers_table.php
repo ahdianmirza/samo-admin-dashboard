@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('data_loggers', function (Blueprint $table) {
             $table->id();
             $table->string('mikronKecil')->nullable();
+            $table->string('mikronSedang')->nullable();
             $table->string('mikronBesar')->nullable();
             $table->string('suhu')->nullable();
             $table->string('kelembapan')->nullable();

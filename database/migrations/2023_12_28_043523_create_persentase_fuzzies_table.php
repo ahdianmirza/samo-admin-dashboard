@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('persentase_udaras', function (Blueprint $table) {
+        Schema::create('persentase_fuzzies', function (Blueprint $table) {
             $table->id();
             $table->integer('mikronKecil')->nullable();
             $table->integer('mikronSedang')->nullable();
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('persentase_udaras');
+        Schema::dropIfExists('persentase_fuzzies');
     }
 };

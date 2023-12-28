@@ -30,7 +30,11 @@ class DatabaseSeeder extends Seeder
         PersentaseUdara::create([
             'mikronkecil' => 0,
             'mikronSedang' => 0,
-            'mikronBesar' => 0
+            'mikronBesar' => 0,
+            'suhu' => 0,
+            'kelembapan' => 0,
+            'alkohol' => 0,
+            'karbonDioksida' => 0,
         ]);
     }
 }

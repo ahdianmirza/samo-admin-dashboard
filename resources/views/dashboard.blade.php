@@ -185,31 +185,40 @@
                         </div>
                     </div>
 
-                    <h4 class="small font-weight-bold">Suhu <span class="float-right">60%</span></h4>
-                    <div class="progress mb-4">
-                        <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60"
-                            aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-
-                    <h4 class="small font-weight-bold">Kelembapan <span class="float-right">80%</span>
+                    <h4 class="small font-weight-bold">Suhu <span class="float-right">{{ $dataPersentase->suhu }}%</span>
                     </h4>
                     <div class="progress mb-4">
-                        <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80"
-                            aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar" role="progressbar" style="width: {{ $dataPersentase->suhu }}%"
+                            aria-valuenow="{{ $dataPersentase->suhu }}" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
 
-                    <h4 class="small font-weight-bold">Alkohol <span class="float-right">80%</span>
+                    <h4 class="small font-weight-bold">Kelembapan <span
+                            class="float-right">{{ $dataPersentase->kelembapan }}%</span>
                     </h4>
                     <div class="progress mb-4">
-                        <div class="progress-bar bg-danger" role="progressbar" style="width: 80%" aria-valuenow="80"
-                            aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar bg-info" role="progressbar"
+                            style="width: {{ $dataPersentase->kelembapan }}%"
+                            aria-valuenow="{{ $dataPersentase->kelembapan }}" aria-valuemin="0" aria-valuemax="100">
+                        </div>
                     </div>
 
-                    <h4 class="small font-weight-bold">CO2 <span class="float-right">100%</span>
+                    <h4 class="small font-weight-bold">Alkohol <span
+                            class="float-right">{{ $dataPersentase->alkohol }}%</span>
+                    </h4>
+                    <div class="progress mb-4">
+                        <div class="progress-bar bg-danger" role="progressbar"
+                            style="width: {{ $dataPersentase->alkohol }}%"
+                            aria-valuenow="{{ $dataPersentase->alkohol }}" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+
+                    <h4 class="small font-weight-bold">CO2 <span
+                            class="float-right">{{ $dataPersentase->karbonDioksida }}%</span>
                     </h4>
                     <div class="progress">
-                        <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100"
-                            aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar bg-success" role="progressbar"
+                            style="width: {{ $dataPersentase->karbonDioksida }}%"
+                            aria-valuenow="{{ $dataPersentase->karbonDioksida }}" aria-valuemin="0" aria-valuemax="100">
+                        </div>
                     </div>
 
                 </div>
@@ -336,9 +345,18 @@
                         <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
                             src="{{ asset('img/SAMO.png') }}" alt="...">
                     </div>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam rem vero illum, nemo eius omnis
-                        nostrum, corporis harum tempora beatae sint aspernatur voluptatum. Magnam nesciunt id quibusdam?
-                        Architecto, provident nostrum.</p>
+                    <p style="text-align: justify">"SAMO" Smart Air Monitoring merupakan sebuah alat berbasis Internet of
+                        things dimana memiliki fungsi
+                        untuk mendeteksi kualitas udara berdasarkan 3 parameter, yaitu kuantitas partikel, suhu, kelembapan,
+                        dan kadar gas alkohol dan CO2 pada udara. SAMO memiliki beberapa fitur diantaranya dapat mendeteksi
+                        kuantitas partikel dengan ukuran minimal 0.5 mikron dan maksimal 10 mikron, mendeteksi suhu dan
+                        kelembapan udara, serta kadar kandungan gas alkohol dan CO2. Selain itu, terdapat fitur prediksi
+                        kualitas udara menggunakan sistem Fuzzy Mamdani yang berfungsi untuk mendeteksi kualitas udara
+                        secara realtime dengan kategori buruk, sedang, dan baik. SAMO merupakan hasil karya ilmiah berupa
+                        alat sistem IOT yang dikembangkan oleh mahasiswa sekolah vokasi IPB yaitu Muhammad Ridzky
+                        Fadhlurrahman dan didukung penuh selama pengerjaan nya oleh mitra PKL Balai Pengujian Mutu dan
+                        Sertifikasi Produk Hewan (BPMSPH) Bogor. SAMO generasi pertama ini difungsikan secara khusus untuk
+                        mendeteksi kualitas udara secara realtime pada lingkungan indoor laboratorium BPMSPH".</p>
                 </div>
             </div>
 
