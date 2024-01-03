@@ -7,6 +7,7 @@ use App\Charts\MonitoringKelembapan;
 use App\Charts\MonitoringSuhu;
 use App\Http\Controllers\Controller;
 use App\Models\DataLogger;
+use App\Models\MonitoringUdara;
 use App\Models\PersentaseUdara;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,7 @@ class DashboardController extends Controller
         return view('dashboard', [
             'title' => 'Dashboard',
             'data_udara' => DataLogger::orderBy('id', 'desc')->first(),
-            'udaras' => DataLogger::all(),
+            'dataMonitoring' => MonitoringUdara::first(),
             'loggers' => $monitoringChart->build(),
             'chartSuhu' => $monitoringSuhu->build(),
             'chartKelembapan' => $monitoringKelembapan->build(),

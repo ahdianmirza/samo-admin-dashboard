@@ -20,10 +20,15 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/data-udara', [ApiController::class, 'indexDataUdara']);
-Route::post('/data-udara', [ApiController::class, 'dataUdara']);
+Route::put('/data-udara', [ApiController::class, 'dataUdara']);
+
+Route::get('/data-logger', [ApiController::class, 'indexDataLogger']);
+Route::post('/data-logger', [ApiController::class, 'dataLogger']);
 
 Route::get('/persentase-udara', [ApiController::class, 'indexPersentaseUdara']);
 Route::post('/persentase-udara', [ApiController::class, 'postPersentaseUdara']);
 
 Route::get('/persentase-fuzzy', [ApiController::class, 'indexPersentaseFuzzy']);
 Route::post('/persentase-fuzzy', [ApiController::class, 'postPersentaseFuzzy']);
+
+Route::get('/fuzzy', [ApiController::class, 'indexFuzzy']);

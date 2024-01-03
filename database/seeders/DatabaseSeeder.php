@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\MonitoringUdara;
 use App\Models\PersentaseUdara;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -35,6 +36,17 @@ class DatabaseSeeder extends Seeder
             'kelembapan' => 0,
             'alkohol' => 0,
             'karbonDioksida' => 0,
+        ]);
+
+        MonitoringUdara::create([
+            'mikronKecil' => 0,
+            'mikronSedang' => 0,
+            'mikronBesar' => 0,
+            'suhu' => 0,
+            'kelembapan' => 0,
+            'karbonDioksida' => 0,
+            'alkohol' => 0,
+            'dataPrediksi' => "",
         ]);
     }
 }

@@ -5,7 +5,7 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Prediksi Kualitas Udara</h1>
         <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                                                                                    class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
+                                                                                                                                                                                                                                                                    class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
     </div>
 
     <!-- Content Row -->
@@ -19,9 +19,9 @@
                         <div class="col mr-2">
                             <div class="text-xs text-center font-weight-bold text-primary text-uppercase mb-1">
                                 Prediksi Kualitas Udara</div>
-                            @if ($dataLogger)
+                            @if ($dataFuzzy)
                                 <div class="h5 mb-0 text-center font-weight-bold text-gray-800">
-                                    {{ $dataLogger->dataPrediksi }}
+                                    {{ $dataFuzzy->dataPrediksi }}
                                 </div>
                             @else
                                 <div class="h5 mb-0 text-center font-weight-bold text-gray-800">
@@ -52,7 +52,7 @@
                 <!-- Card Body -->
                 <div class="card-body">
                     <div class="chart-area">
-                        <canvas id="myAreaChart"></canvas>
+                        <div id="grafikPrediksi"></div>
                     </div>
                 </div>
             </div>
@@ -116,19 +116,58 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>07:30, 11/10/2023</td>
-                            <td>Baik</td>
-                            <td>90</td>
-                        </tr>
-                        <tr>
-                            <td>08:30, 11/10/2023</td>
-                            <td>Sedang</td>
-                            <td>65</td>
-                        </tr>
+                        @foreach ($dataPrediksi as $prediksi)
+                            <tr>
+                                <td>{{ date('d/m/Y H:i', strtotime($prediksi->created_at)) }}</td>
+                                <td>
+                                    @if ($prediksi->nilaiPrediksi < 0.5)
+                                        Buruk
+                                    @endif
+
+                                    @if ($prediksi->nilaiPrediksi == 0.5)
+                                        Sedang
+                                    @endif
+
+                                    @if ($prediksi->nilaiPrediksi > 0.5)
+                                        Baik
+                                    @endif
+                                </td>
+                                <td>{{ $prediksi->nilaiPrediksi }}</td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
+                {{ $dataPrediksi->links() }}
             </div>
         </div>
     </div>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script type="text/javascript">
+        let fuzzy = <?php echo json_encode($fuzzy); ?>;
+        let hour = <?php echo json_encode($hour); ?>;
+
+        Highcharts.chart('grafikPrediksi', {
+            title: {
+                text: 'Grafik Nilai Prediksi Fuzzy'
+            },
+            xAxis: {
+                categories: hour
+            },
+            yAxis: {
+                title: {
+                    text: 'Nilai Prediksi Fuzzy'
+                }
+            },
+            plotOptions: {
+                series: {
+                    allowPointSelect: true
+                }
+            },
+            series: [{
+                name: 'Nilai Prediksi',
+                data: fuzzy
+            }]
+        })
+    </script>
 @endsection

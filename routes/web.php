@@ -21,9 +21,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/login', [LoginController::class, 'index'])->middleware('guest')->name('login');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
-Route::get('/data-udara', [DashboardController::class, 'dataUdara'])->name('dataUdara')->middleware('auth');
 
+Route::get('/', [DashboardController::class, 'index'])->middleware('auth');
+
+Route::get('/data-udara', [DashboardController::class, 'dataUdara'])->name('dataUdara')->middleware('auth');
 Route::get('/prediksi', [PrediksiController::class, 'index'])->middleware('auth');
 Route::get('/data-logger', [DataLoggerController::class, 'index'])->middleware('auth');
 // Route::get('/status', [StatusController::class, 'index'])->middleware('auth');

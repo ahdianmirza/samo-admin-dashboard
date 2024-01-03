@@ -415,7 +415,7 @@
         $(document).ready(function() {
             setInterval(() => {
                 ambilDataUdara();
-            }, 5000);
+            }, 1000);
         });
     </script>
 
