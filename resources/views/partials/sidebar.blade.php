@@ -22,7 +22,7 @@
     <li class="nav-item active">
         <a class="nav-link" href="/prediksi">
             <i class="fas fa-fw fa-regular fa-wind"></i>
-            <span>Prediksi Kualitas</span></a>
+            <span>Prediksi Kualitas Udara</span></a>
     </li>
 
     <li class="nav-item active">

@@ -5,7 +5,7 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Prediksi Kualitas Udara</h1>
         <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                                                                                                                                                                                                                                                    class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
+                                                                                                                                                                                                                                                                                                                    class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
     </div>
 
     <!-- Content Row -->
@@ -44,13 +44,13 @@
 
         <!-- Area Chart -->
         <div class="col-xl-12 col-lg-7">
-            <div class="card shadow mb-4">
+            <div class="card shadow mb-4" style="height: 30rem">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h6 class="m-0 font-weight-bold text-primary">Grafik Prediksi Kualitas Udara</h6>
                 </div>
                 <!-- Card Body -->
-                <div class="card-body">
+                <div class="card-body p-2">
                     <div class="chart-area">
                         <div id="grafikPrediksi"></div>
                     </div>
@@ -116,25 +116,31 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($dataPrediksi as $prediksi)
+                        @if (count($dataPrediksi) > 0)
+                            @foreach ($dataPrediksi as $prediksi)
+                                <tr>
+                                    <td>{{ date('d/m/Y H:i', strtotime($prediksi->created_at)) }}</td>
+                                    <td>
+                                        @if ($prediksi->nilaiPrediksi < 0.5)
+                                            Buruk
+                                        @endif
+
+                                        @if ($prediksi->nilaiPrediksi == 0.5)
+                                            Sedang
+                                        @endif
+
+                                        @if ($prediksi->nilaiPrediksi > 0.5)
+                                            Baik
+                                        @endif
+                                    </td>
+                                    <td>{{ $prediksi->nilaiPrediksi }}</td>
+                                </tr>
+                            @endforeach
+                        @else
                             <tr>
-                                <td>{{ date('d/m/Y H:i', strtotime($prediksi->created_at)) }}</td>
-                                <td>
-                                    @if ($prediksi->nilaiPrediksi < 0.5)
-                                        Buruk
-                                    @endif
-
-                                    @if ($prediksi->nilaiPrediksi == 0.5)
-                                        Sedang
-                                    @endif
-
-                                    @if ($prediksi->nilaiPrediksi > 0.5)
-                                        Baik
-                                    @endif
-                                </td>
-                                <td>{{ $prediksi->nilaiPrediksi }}</td>
+                                <td colspan="7" class="text-center">No data found.</td>
                             </tr>
-                        @endforeach
+                        @endif
                     </tbody>
                 </table>
                 {{ $dataPrediksi->links() }}

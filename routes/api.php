@@ -20,7 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/data-udara', [ApiController::class, 'indexDataUdara']);
-Route::put('/data-udara', [ApiController::class, 'dataUdara']);
+Route::post('/data-udara', [ApiController::class, 'dataUdara']);
 
 Route::get('/data-logger', [ApiController::class, 'indexDataLogger']);
 Route::post('/data-logger', [ApiController::class, 'dataLogger']);
