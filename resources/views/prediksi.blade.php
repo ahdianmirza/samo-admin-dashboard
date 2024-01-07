@@ -5,7 +5,7 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Prediksi Kualitas Udara</h1>
         <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                                                                                                                                                                                                                                                                                                    class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                            class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
     </div>
 
     <!-- Content Row -->
@@ -107,6 +107,22 @@
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="table-responsive">
+                <form action="/prediksi" method="get" class="mb-3">
+                    <label for="search" class="form-label">Pencarian</label>
+                    <div class="d-flex">
+                        <input type="text" class="form-control" id="search" name="search"
+                            value="{{ request('search') }}" placeholder="Cari berdasarkan waktu" aria-describedby="search">
+                        <button type="submit" class="btn btn-primary ml-2">Cari</button>
+                    </div>
+                </form>
+                <div class="d-flex align-items-center column-gap-1 mb-3">
+                    <a href="/prediksi" class="btn btn-primary">Semua</a>
+                    <form action="/prediksi" method="get" class="d-flex column-gap-1">
+                        <button type="submit" value="buruk" name="prediksi" class="btn btn-danger">Buruk</button>
+                        <button type="submit" value="sedang" name="prediksi" class="btn btn-warning">Sedang</button>
+                        <button type="submit" value="baik" name="prediksi" class="btn btn-success">Baik</button>
+                    </form>
+                </div>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
@@ -119,7 +135,7 @@
                         @if (count($dataPrediksi) > 0)
                             @foreach ($dataPrediksi as $prediksi)
                                 <tr>
-                                    <td>{{ date('d/m/Y H:i', strtotime($prediksi->created_at)) }}</td>
+                                    <td>{{ date('d-m-Y H:i', strtotime($prediksi->created_at)) }}</td>
                                     <td>
                                         @if ($prediksi->nilaiPrediksi < 0.5)
                                             Buruk

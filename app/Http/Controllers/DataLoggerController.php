@@ -11,7 +11,7 @@ class DataLoggerController extends Controller
     public function index() {
         return view('data-logger', [
             'title' => 'Data Loger',
-            "dataLoggers" => DataLogger::paginate(20)->withQueryString()
+            "dataLoggers" => DataLogger::orderBy('created_at', 'asc')->filter(request(['search']))->paginate(25)->withQueryString()
         ]);
     }
 }

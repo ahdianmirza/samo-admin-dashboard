@@ -15,14 +15,11 @@ class PrediksiController extends Controller
     public function index() {
         $fuzzy = Fuzzy::select('nilaiPrediksi')->GroupBy(DB::raw("Hour(created_at)"))->pluck('nilaiPrediksi');
         $hour = Fuzzy::select('created_at')->GroupBy(DB::raw("Hour(created_at)"))->pluck('created_at');
-        // foreach ($hour as $h) {
-        //     dd($h);
-        // }
 
         return view('prediksi', [
             'title' => 'Prediksi Kualitas Udara',
             'dataFuzzy' => MonitoringUdara::first(),
-            'dataPrediksi' => Fuzzy::orderBy('created_at', 'asc')->paginate(20)->withQueryString(),
+            'dataPrediksi' => Fuzzy::orderBy('created_at', 'asc')->filter(request(['search', 'prediksi']))->paginate(25)->withQueryString(),
             'fuzzy' => $fuzzy,
             'hour' => $hour
         ]);

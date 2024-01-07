@@ -33,7 +33,17 @@ class ApiController extends Controller
 
     public function dataLogger(Request $request) {
         $dataUdara = $request->all();
-        $createDataUdara = DataLogger::create($dataUdara);
+
+        $createDataUdara = DataLogger::create([
+            'mikronKecil' => $dataUdara['mikronKecil'],
+            'mikronSedang' => $dataUdara['mikronSedang'],
+            'mikronBesar' => $dataUdara['mikronBesar'],
+            'suhu' => $dataUdara['suhu'],
+            'kelembapan' => $dataUdara['kelembapan'],
+            'karbonDioksida' => $dataUdara['karbonDioksida'],
+            'alkohol' => $dataUdara['alkohol'],
+            'dataPrediksi' => $dataUdara['dataPrediksi']
+        ]);
         return response()->json($createDataUdara);
     }
 

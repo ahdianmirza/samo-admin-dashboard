@@ -27,4 +27,5 @@ Route::get('/', [DashboardController::class, 'index'])->middleware('auth');
 Route::get('/data-udara', [DashboardController::class, 'dataUdara'])->name('dataUdara')->middleware('auth');
 Route::get('/prediksi', [PrediksiController::class, 'index'])->middleware('auth');
 Route::get('/data-logger', [DataLoggerController::class, 'index'])->middleware('auth');
+// Route::get('/data-logger', [DataLoggerController::class, 'search'])->middleware('auth');
 // Route::get('/status', [StatusController::class, 'index'])->middleware('auth');
