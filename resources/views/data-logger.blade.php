@@ -57,5 +57,5 @@
         </div>
     </div>
 
-    {{-- {{ $dataLoggers->links() }} --}}
+    {{ $dataLoggers->links() }}
 @endsection

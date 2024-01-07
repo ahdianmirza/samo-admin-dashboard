@@ -5,7 +5,7 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Prediksi Kualitas Udara</h1>
         <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                                                                                                                                                                                                                                                                                                                                                                                                                                            class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
     </div>
 
     <!-- Content Row -->
@@ -169,12 +169,28 @@
         let fuzzy = <?php echo json_encode($fuzzy); ?>;
         let hour = <?php echo json_encode($hour); ?>;
 
+        const formatDate = (myDate) => {
+            const date = new Date(myDate);
+            return date;
+        }
+
+        const formatter = new Intl.DateTimeFormat('id-ID', {
+            hour: '2-digit',
+        });
+
+        let dataHour = [];
+
+        hour.map(data => {
+            let jam = formatter.format(formatDate(data));
+            dataHour.push(`${jam}:00`);
+        })
+
         Highcharts.chart('grafikPrediksi', {
             title: {
                 text: 'Grafik Nilai Prediksi Fuzzy'
             },
             xAxis: {
-                categories: hour
+                categories: dataHour
             },
             yAxis: {
                 title: {

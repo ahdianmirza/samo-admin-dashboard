@@ -141,9 +141,7 @@
                 <!-- Card Body -->
                 <div class="card-body">
                     <div class="chart-area" style="height: fit-content">
-                        <div class="col">
-                            {!! $loggers->container() !!}
-                        </div>
+                        <div id="grafikMikronKecil"></div>
                     </div>
                 </div>
             </div>
@@ -272,13 +270,54 @@
         </div>
     </div>
 
-    <script src="{{ $loggers->cdn() }}"></script>
-    <script src="{{ $chartSuhu->cdn() }}"></script>
-    <script src="{{ $chartKelembapan->cdn() }}"></script>
+    {{-- <script src="{{ $loggers->cdn() }}"></script>
 
-    {{ $loggers->script() }}
-    {{ $chartSuhu->script() }}
-    {{ $chartKelembapan->script() }}
+    {{ $loggers->script() }} --}}
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script type="text/javascript">
+        let mikronKecil = <?php echo json_encode($mikronKecil); ?>;
+        let hour = <?php echo json_encode($hour); ?>;
+
+        const formatDate = (myDate) => {
+            const date = new Date(myDate);
+            return date;
+        }
+
+        const formatter = new Intl.DateTimeFormat('id-ID', {
+            hour: '2-digit',
+        });
+
+        let dataHour = [];
+
+        hour.map(data => {
+            let jam = formatter.format(formatDate(data));
+            dataHour.push(`${jam}:00`);
+        })
+
+        Highcharts.chart('grafikMikronKecil', {
+            title: {
+                text: 'Grafik Data Mikron Kecil'
+            },
+            xAxis: {
+                categories: dataHour
+            },
+            yAxis: {
+                title: {
+                    text: 'Data Mikron Kecil'
+                }
+            },
+            plotOptions: {
+                series: {
+                    allowPointSelect: true
+                }
+            },
+            series: [{
+                name: 'Data Mikron Kecil',
+                data: mikronKecil
+            }]
+        })
+    </script>
 
     <script>
         function ambilDataUdara() {
@@ -311,29 +350,6 @@
             setInterval(() => {
                 ambilDataUdara();
             }, 1000);
-        });
-    </script>
-
-    <script>
-        const chartjs = document.getElementById('myChart');
-
-        new Chart(chartjs, {
-            type: 'bar',
-            data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
         });
     </script>
 @endsection

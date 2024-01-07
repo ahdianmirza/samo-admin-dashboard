@@ -2,26 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Charts\MonitoringChart;
-use App\Charts\MonitoringKelembapan;
-use App\Charts\MonitoringSuhu;
 use App\Http\Controllers\Controller;
 use App\Models\DataLogger;
 use App\Models\MonitoringUdara;
 use App\Models\PersentaseUdara;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
-    public function index(MonitoringChart $monitoringChart, MonitoringSuhu $monitoringSuhu, MonitoringKelembapan $monitoringKelembapan) {
+    public function index() {
+        $mikronKecil = DataLogger::select('mikronKecil')->GroupBy(DB::raw("Hour(created_at)"))->pluck('mikronKecil');
+        $hour = DataLogger::select('created_at')->GroupBy(DB::raw("Hour(created_at)"))->pluck('created_at');
+
         return view('dashboard', [
             'title' => 'Dashboard',
-            'data_udara' => DataLogger::orderBy('id', 'desc')->first(),
             'dataMonitoring' => MonitoringUdara::first(),
-            'loggers' => $monitoringChart->build(),
-            'chartSuhu' => $monitoringSuhu->build(),
-            'chartKelembapan' => $monitoringKelembapan->build(),
-            'dataPersentase' => PersentaseUdara::firstWhere('id', 1)
+            'dataPersentase' => PersentaseUdara::firstWhere('id', 1),
+            'mikronKecil' => $mikronKecil,
+            'hour' => $hour
         ]);
     }
 
