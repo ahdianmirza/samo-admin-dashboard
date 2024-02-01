@@ -1,7 +1,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex flex-column align-items-center justify-content-center my-5" href="/dashboard">
+    <a class="sidebar-brand d-flex flex-column align-items-center justify-content-center my-5" href="/">
         <div class="text-center">
             <img src="{{ asset('img/SAMO.png') }}" alt="..." class="img-thumbnail" width="70">
             <!-- <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" src="img/SAMO.png" alt="..."> -->
