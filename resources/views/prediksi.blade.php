@@ -5,7 +5,7 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Prediksi Kualitas Udara</h1>
         <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
     </div>
 
     <!-- Content Row -->
@@ -137,15 +137,15 @@
                                 <tr>
                                     <td>{{ date('d-m-Y H:i', strtotime($prediksi->created_at)) }}</td>
                                     <td>
-                                        @if ($prediksi->nilaiPrediksi < 0.5)
+                                        @if ($prediksi->nilaiPrediksi <= 0.3)
                                             Buruk
                                         @endif
 
-                                        @if ($prediksi->nilaiPrediksi == 0.5)
+                                        @if ($prediksi->nilaiPrediksi >= 0.4 && $prediksi->nilaiPrediksi < 0.7)
                                             Sedang
                                         @endif
 
-                                        @if ($prediksi->nilaiPrediksi > 0.5)
+                                        @if ($prediksi->nilaiPrediksi >= 0.7)
                                             Baik
                                         @endif
                                     </td>
