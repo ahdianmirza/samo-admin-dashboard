@@ -19,7 +19,11 @@
                         <button type="submit" class="btn btn-primary ml-2">Cari</button>
                     </div>
                 </form>
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+                {{-- Export Data --}}
+                <a href="/data-logger/export" class="btn btn-primary">Unduh Data</a>
+
+                <table class="table table-bordered mt-3" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>Waktu</th>
@@ -30,6 +34,7 @@
                             <th>Kelembapan</th>
                             <th>Kandungan C02</th>
                             <th>Kandungan Alcohol</th>
+                            <th>Prediksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -44,6 +49,7 @@
                                     <td>{{ $dataLogger->kelembapan }}</td>
                                     <td>{{ $dataLogger->karbonDioksida }}</td>
                                     <td>{{ $dataLogger->alkohol }}</td>
+                                    <td>{{ $dataLogger->dataPrediksi }}</td>
                                 </tr>
                             @endforeach
                         @else
