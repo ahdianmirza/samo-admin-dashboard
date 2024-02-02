@@ -97,8 +97,10 @@ class ApiController extends Controller
     }
 
     public function dataFuzzy(Request $request) {
+        $fuzzy = floatval($request['nilaiPrediksi']);
+
         $fuzzyCreate = Fuzzy::create([
-            'nilaiPrediksi' => $request['nilaiPrediksi']
+            'nilaiPrediksi' => $fuzzy
         ]);
 
         if (!$fuzzyCreate) {
