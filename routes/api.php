@@ -25,6 +25,9 @@ Route::post('/data-udara', [ApiController::class, 'dataUdara']);
 Route::get('/data-logger', [ApiController::class, 'indexDataLogger']);
 Route::post('/data-logger', [ApiController::class, 'dataLogger']);
 
+Route::get('/data-fuzzy', [ApiController::class, 'indexDataFuzzy']);
+Route::post('/data-fuzzy', [ApiController::class, 'dataFuzzy']);
+
 Route::get('/persentase-udara', [ApiController::class, 'indexPersentaseUdara']);
 Route::post('/persentase-udara', [ApiController::class, 'postPersentaseUdara']);
 

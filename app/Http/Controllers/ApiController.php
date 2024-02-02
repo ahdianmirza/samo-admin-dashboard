@@ -90,4 +90,21 @@ class ApiController extends Controller
         });
         return response()->json($hour);
     }
+
+    public function indexDataFuzzy() {
+        $dataFuzzy = Fuzzy::all();
+        return response()->json($dataFuzzy);
+    }
+
+    public function dataFuzzy(Request $request) {
+        $fuzzyCreate = Fuzzy::create([
+            'nilaiPrediksi' => $request['nilaiPrediksi']
+        ]);
+
+        if (!$fuzzyCreate) {
+            return response()->json(['message' => 'Post Failed']);
+        }
+
+        return response()->json(['message' => 'Post Success']);
+    }
 }
